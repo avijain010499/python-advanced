@@ -1,0 +1,12 @@
+
+    
+    
+    truncate table "my_etl_db"."main_raw_ingestion"."raw_customers";
+    -- dbt seed --
+    
+          insert into "my_etl_db"."main_raw_ingestion"."raw_customers" ("customer_id", "customer_name", "region", "segment", "email", "country_code") values
+          (%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s),(%s,%s,%s,%s,%s,%s)
+      
+
+;
+  

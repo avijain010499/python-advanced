@@ -1,0 +1,35 @@
+name: 'my_etl_project'
+version: '1.0.0'
+config-version: 2
+
+# This profile must match the name in profiles.yml
+profile: 'my_etl_project'
+
+# Directories
+model-paths:    ["models"]
+test-paths:     ["tests"]
+macro-paths:    ["macros"]
+seed-paths:     ["seeds"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+
+# Clean target folder on dbt clean
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Model-level materialization defaults
+models:
+  my_etl_project:
+    staging:
+      +materialized: view       # Staging → lightweight views, no storage cost
+    intermediate:
+      +materialized: view       # Intermediate → views, used as building blocks
+    marts:
+      +materialized: table      # Marts → tables, fast for BI queries
+      +schema: analytics        # Write to 'analytics' schema
+
+# Seed configuration
+seeds:
+  my_etl_project:
+    +schema: raw_ingestion      # Seeds land in 'raw_ingestion' schema

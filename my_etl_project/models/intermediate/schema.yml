@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: int_orders_customers
+    description: "Orders enriched with customer name, region, and segment. Joins int_orders_cleaned with stg_customers."
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - not_null
+          - unique
+      - name: amount
+        description: "Safe order amount (nulls/negatives replaced with 0)"
+        tests:
+          - not_null

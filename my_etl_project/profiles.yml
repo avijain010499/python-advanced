@@ -1,0 +1,32 @@
+# profiles.yml — Database connection settings
+# ⚠️  Credentials are loaded from environment variables — safe to keep in git.
+# Set the following env vars before running dbt:
+#   export DBT_PG_HOST=localhost
+#   export DBT_PG_PORT=5432
+#   export DBT_PG_USER=postgres
+#   export DBT_PG_PASSWORD=yourpassword
+#   export DBT_PG_DB=my_etl_db
+
+my_etl_project:
+  target: dev         # Default environment
+  outputs:
+
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_PG_HOST', 'localhost') }}"
+      port: "{{ env_var('DBT_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('DBT_PG_USER', 'postgres') }}"
+      password: "{{ env_var('DBT_PG_PASSWORD', '') }}"
+      dbname: "{{ env_var('DBT_PG_DB', 'my_etl_db') }}"
+      schema: main
+      threads: 4
+
+    prod:
+      type: postgres
+      host: "{{ env_var('DBT_PG_HOST') }}"
+      port: "{{ env_var('DBT_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('DBT_PG_USER') }}"
+      password: "{{ env_var('DBT_PG_PASSWORD') }}"
+      dbname: "{{ env_var('DBT_PG_DB') }}"
+      schema: main
+      threads: 4

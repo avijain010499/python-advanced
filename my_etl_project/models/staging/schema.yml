@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned and standardized orders from the raw layer"
+    columns:
+      - name: order_id
+        description: "Primary key — unique identifier per order"
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Foreign key to stg_customers"
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_customers')
+                field: customer_id
+
+      - name: status
+        description: "Order status — normalized to uppercase"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMPLETE', 'PENDING', 'FAILED', 'CANCELLED']
+
+      - name: amount
+        description: "Order amount in USD"
+        tests:
+          - not_null
+          - positive_values        # Custom generic test (tests/generic/positive_values.sql)
+
+  - name: stg_customers
+    description: "Cleaned customer profile records"
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - not_null
+          - unique
+
+      - name: region
+        description: "Customer region"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['NORTH', 'SOUTH', 'EAST', 'WEST']
+
+      - name: segment
+        description: "Customer value tier (PLATINUM/GOLD/SILVER)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PLATINUM', 'GOLD', 'SILVER']
+
+  - name: stg_products
+    description: "Cleaned product catalog"
+    columns:
+      - name: product_id
+        description: "Primary key"
+        tests:
+          - not_null
+          - unique
+
+      - name: price_usd
+        description: "Product price in USD"
+        tests:
+          - not_null
+          - positive_values

@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: >
+      Daily sales fact table. Contains one row per COMPLETED order,
+      enriched with customer and country dimension attributes.
+      Updated daily via the morning ETL run.
+    meta:
+      owner: "Data Engineering Team"
+      sla: "Before 8am UTC"
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order. Natural key from orders source."
+        tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Foreign key to the customer dimension"
+        tests:
+          - not_null
+
+      - name: amount
+        description: "Order amount in USD (nulls/negatives replaced with 0)"
+        tests:
+          - not_null
+          - positive_values
+
+      - name: status
+        description: "Order status — only COMPLETE orders are in this table"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['COMPLETE']
+
+      - name: customer_name
+        description: "Full name of the customer"
+
+      - name: region
+        description: "Customer's geographic region (NORTH/SOUTH/EAST/WEST)"
+
+      - name: segment
+        description: |
+          Customer tier based on annual spend:
+          - PLATINUM: > $50,000/year
+          - GOLD:     $10,000-$50,000/year
+          - SILVER:   < $10,000/year
+
+      - name: country_name
+        description: "Full country name from the country_codes lookup table"
+
+      - name: dbt_loaded_at
+        description: "Timestamp when this row was loaded by dbt"
+
+  - name: fct_sales_incremental
+    description: "Incremental sales table — processes only new rows on each run. Same grain as fct_sales but includes all statuses."
+    columns:
+      - name: order_id
+        description: "Primary key"
+        tests:
+          - not_null
+          - unique

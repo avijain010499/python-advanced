@@ -1,0 +1,9 @@
+customer_id,customer_name,region,segment,email,country_code
+C001,Rahul Sharma,NORTH,GOLD,rahul@example.com,IN
+C002,Emma Smith,WEST,PLATINUM,emma@example.com,UK
+C003,Priya Patel,SOUTH,SILVER,priya@example.com,IN
+C004,Klaus Müller,EAST,GOLD,klaus@example.com,DE
+C005,Lucas Silva,SOUTH,SILVER,lucas@example.com,BR
+C006,Sarah Johnson,WEST,PLATINUM,sarah@example.com,US
+C007,Hans Becker,EAST,GOLD,hans@example.com,DE
+C008,Alice Brown,NORTH,SILVER,alice@example.com,UK

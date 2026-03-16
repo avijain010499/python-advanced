@@ -1,0 +1,9 @@
+product_id,product_name,category,price,currency
+P001,Wireless Headphones,Electronics,250.00,USD
+P002,Running Shoes,Footwear,89.99,USD
+P003,Leather Bag,Accessories,450.00,USD
+P004,Yoga Mat,Sports,120.50,USD
+P005,Smartphone Stand,Electronics,999.00,USD
+P006,Notebook Set,Stationery,60.00,USD
+P007,Coffee Maker,Appliances,300.75,USD
+P008,Sunglasses,Accessories,180.00,USD

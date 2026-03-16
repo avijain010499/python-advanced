@@ -1,0 +1,835 @@
+{
+    "metadata": {
+        "dbt_schema_version": "https://schemas.getdbt.com/dbt/catalog/v1.json",
+        "dbt_version": "1.11.7",
+        "generated_at": "2026-03-16T03:28:28.482805Z",
+        "invocation_id": "6f7da002-79af-4403-83da-41b2d1e324db",
+        "invocation_started_at": "2026-03-16T03:28:27.953373Z",
+        "env": {}
+    },
+    "nodes": {
+        "model.my_etl_project.int_orders_customers": {
+            "metadata": {
+                "type": "VIEW",
+                "schema": "main",
+                "name": "int_orders_customers",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "numeric",
+                    "index": 2,
+                    "name": "amount",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "status",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 4,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 6,
+                    "name": "updated_at",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 7,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "customer_name": {
+                    "type": "text",
+                    "index": 8,
+                    "name": "customer_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 9,
+                    "name": "region",
+                    "comment": null
+                },
+                "segment": {
+                    "type": "text",
+                    "index": 10,
+                    "name": "segment",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.int_orders_customers"
+        },
+        "model.my_etl_project.stg_customers": {
+            "metadata": {
+                "type": "VIEW",
+                "schema": "main",
+                "name": "stg_customers",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "customer_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "customer_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "region",
+                    "comment": null
+                },
+                "segment": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "segment",
+                    "comment": null
+                },
+                "email": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "email",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.stg_customers"
+        },
+        "model.my_etl_project.stg_orders": {
+            "metadata": {
+                "type": "VIEW",
+                "schema": "main",
+                "name": "stg_orders",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "status",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "numeric",
+                    "index": 4,
+                    "name": "amount",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 5,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 7,
+                    "name": "updated_at",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.stg_orders"
+        },
+        "model.my_etl_project.stg_products": {
+            "metadata": {
+                "type": "VIEW",
+                "schema": "main",
+                "name": "stg_products",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "product_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "product_id",
+                    "comment": null
+                },
+                "product_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "product_name",
+                    "comment": null
+                },
+                "category": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "category",
+                    "comment": null
+                },
+                "price_usd": {
+                    "type": "numeric",
+                    "index": 4,
+                    "name": "price_usd",
+                    "comment": null
+                },
+                "currency": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "currency",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.stg_products"
+        },
+        "model.my_etl_project.fct_sales": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_analytics",
+                "name": "fct_sales",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "customer_name": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "customer_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "region",
+                    "comment": null
+                },
+                "segment": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "segment",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "status",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "numeric",
+                    "index": 7,
+                    "name": "amount",
+                    "comment": null
+                },
+                "amount_dollars": {
+                    "type": "numeric",
+                    "index": 8,
+                    "name": "amount_dollars",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 9,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 10,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "country_name": {
+                    "type": "text",
+                    "index": 11,
+                    "name": "country_name",
+                    "comment": null
+                },
+                "country_region": {
+                    "type": "text",
+                    "index": 12,
+                    "name": "country_region",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 13,
+                    "name": "updated_at",
+                    "comment": null
+                },
+                "dbt_loaded_at": {
+                    "type": "timestamp with time zone",
+                    "index": 14,
+                    "name": "dbt_loaded_at",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.fct_sales"
+        },
+        "model.my_etl_project.fct_sales_incremental": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_analytics",
+                "name": "fct_sales_incremental",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "numeric",
+                    "index": 3,
+                    "name": "amount",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "status",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 5,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 7,
+                    "name": "updated_at",
+                    "comment": null
+                },
+                "dbt_loaded_at": {
+                    "type": "timestamp with time zone",
+                    "index": 8,
+                    "name": "dbt_loaded_at",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "model.my_etl_project.fct_sales_incremental"
+        },
+        "seed.my_etl_project.country_codes": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "country_codes",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "country_code": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "country_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "country_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "region",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "seed.my_etl_project.country_codes"
+        },
+        "seed.my_etl_project.raw_customers": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_customers",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "customer_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "customer_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "region",
+                    "comment": null
+                },
+                "segment": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "segment",
+                    "comment": null
+                },
+                "email": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "email",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "seed.my_etl_project.raw_customers"
+        },
+        "seed.my_etl_project.raw_orders": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_orders",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "double precision",
+                    "index": 3,
+                    "name": "amount",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "status",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 5,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 7,
+                    "name": "updated_at",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "seed.my_etl_project.raw_orders"
+        },
+        "seed.my_etl_project.raw_products": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_products",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "product_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "product_id",
+                    "comment": null
+                },
+                "product_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "product_name",
+                    "comment": null
+                },
+                "category": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "category",
+                    "comment": null
+                },
+                "price": {
+                    "type": "double precision",
+                    "index": 4,
+                    "name": "price",
+                    "comment": null
+                },
+                "currency": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "currency",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "seed.my_etl_project.raw_products"
+        }
+    },
+    "sources": {
+        "source.my_etl_project.raw.raw_customers": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_customers",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "customer_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "customer_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_name",
+                    "comment": null
+                },
+                "region": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "region",
+                    "comment": null
+                },
+                "segment": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "segment",
+                    "comment": null
+                },
+                "email": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "email",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "source.my_etl_project.raw.raw_customers"
+        },
+        "source.my_etl_project.raw.raw_orders": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_orders",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "order_id": {
+                    "type": "integer",
+                    "index": 1,
+                    "name": "order_id",
+                    "comment": null
+                },
+                "customer_id": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "customer_id",
+                    "comment": null
+                },
+                "amount": {
+                    "type": "double precision",
+                    "index": 3,
+                    "name": "amount",
+                    "comment": null
+                },
+                "status": {
+                    "type": "text",
+                    "index": 4,
+                    "name": "status",
+                    "comment": null
+                },
+                "order_date": {
+                    "type": "date",
+                    "index": 5,
+                    "name": "order_date",
+                    "comment": null
+                },
+                "country_code": {
+                    "type": "text",
+                    "index": 6,
+                    "name": "country_code",
+                    "comment": null
+                },
+                "updated_at": {
+                    "type": "timestamp without time zone",
+                    "index": 7,
+                    "name": "updated_at",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "source.my_etl_project.raw.raw_orders"
+        },
+        "source.my_etl_project.raw.raw_products": {
+            "metadata": {
+                "type": "BASE TABLE",
+                "schema": "main_raw_ingestion",
+                "name": "raw_products",
+                "database": "my_etl_db",
+                "comment": null,
+                "owner": "aviraljain"
+            },
+            "columns": {
+                "product_id": {
+                    "type": "text",
+                    "index": 1,
+                    "name": "product_id",
+                    "comment": null
+                },
+                "product_name": {
+                    "type": "text",
+                    "index": 2,
+                    "name": "product_name",
+                    "comment": null
+                },
+                "category": {
+                    "type": "text",
+                    "index": 3,
+                    "name": "category",
+                    "comment": null
+                },
+                "price": {
+                    "type": "double precision",
+                    "index": 4,
+                    "name": "price",
+                    "comment": null
+                },
+                "currency": {
+                    "type": "text",
+                    "index": 5,
+                    "name": "currency",
+                    "comment": null
+                }
+            },
+            "stats": {
+                "has_stats": {
+                    "id": "has_stats",
+                    "label": "Has Stats?",
+                    "value": false,
+                    "include": false,
+                    "description": "Indicates whether there are statistics for this table"
+                }
+            },
+            "unique_id": "source.my_etl_project.raw.raw_products"
+        }
+    },
+    "errors": null
+}
